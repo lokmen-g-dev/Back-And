@@ -21,10 +21,11 @@ app.use(express.json());
 
 const AdminRoute = require("./routes/Reclamation");
 const TypeRoute = require ("./routes/type")
-
+const ResponseRoute = require("./routes/Reponse")
 
 app.use('/admin',AdminRoute);
-app.use('/type',TypeRoute)
+app.use('/type',TypeRoute);
+app.use('/reponse',ResponseRoute)
 
 
 

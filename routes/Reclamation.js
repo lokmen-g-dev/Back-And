@@ -34,8 +34,27 @@ router.get("/reclamation/:id", async (req, res) => {
         res.send(ajouter);
     }catch(err){res.json({message:err})}
     })
-   
+   ///////////********************* */
+   router.get("/traiter", async (req, res) => {
+    try {
+      const reclamationList = await reclamation.find({ status: "traiter" });
+      res.send(reclamationList);
+    } catch (err) {
+      res.json({ message: err });
+    }
+  });
 
+
+  /****************en cours */
+  router.get("/encours", async (req, res) => {
+    try {
+      const reclamationList = await reclamation.find({ status: "Encours" });
+      res.send(reclamationList);
+    } catch (err) {
+      res.json({ message: err });
+    }
+  });
+  
 /**************************End of the FUN */
     
 
@@ -180,7 +199,7 @@ router.patch("/update/:id", async (req, res) => {
 
 router.patch("/updatee/:id", async (req, res) => {
   try {
-    const { status } = req.body;
+    const status  = "traiter";
     console.log(status);
 
     const updatedReclamation = await reclamation.findOneAndUpdate(

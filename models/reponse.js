@@ -1,17 +1,31 @@
-const mongoose= require("mongoose");
-const opts = { toJSON: { virtuals: true } };
-const addSchema = new mongoose.Schema({
- 
-    reponse: {
-      type: String
-      
-    }
-    
-    
- 
-    
-  },opts);
-  
-  const reponse = mongoose.model("reponse", addSchema);
+const mongoose = require("mongoose");
 
-  module.exports = reponse;
+const reponseSchema = new mongoose.Schema({
+  reclamation: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "reclamation",
+  },
+  titre:{
+    type: String,
+
+  },
+  Description:{
+    type: String,
+
+  },
+  status:{
+    type: String,
+
+  },
+  type: {
+    type: String,
+  },
+  message: {
+    type: String,
+  },
+  // Other fields for the reponse model
+});
+
+const reponse = mongoose.model("reponse", reponseSchema);
+
+module.exports = reponse;
